@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+message Todo {
+    string content = 1;
+    bool completed = 2;
+    string owner = 3;
+}
+
+message TodoToSave{
+    string content = 1;
+    string owner = 2;
+}
+
+message Ack{
+    int32 code = 1;
+    string message = 2;
+}
+
+message SearchReq {
+    string owner = 1;
+    bool completed = 2;
+}
+
+message SearchRes {
+    repeated Todo todos = 1;
+    Ack ack = 2;
+}
+
+service TodoService {
+    rpc Search(SearchReq) returns (SearchRes);
+    rpc Save(TodoToSave) returns (Ack);
+}
