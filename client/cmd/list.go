@@ -21,7 +21,7 @@ var listCmd = &cobra.Command{
 		}
 
 		for i, todo := range todos.Todos {
-			fmt.Println("%d : %s", i, todo)
+			fmt.Println(i, ":", todo)
 		}
 	},
 	Args: cobra.NoArgs,

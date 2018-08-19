@@ -21,6 +21,6 @@ var addCmd = &cobra.Command{
 			panic(fmt.Sprintf("error %s", err))
 		}
 
-		fmt.Println("ack : %s", ack)
+		fmt.Println("ack :", ack)
 	},
 }

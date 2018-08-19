@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"net"
 
+	"app/server/cmd"
 	pb "app/todo"
 
+	"github.com/spf13/viper"
 	"google.golang.org/grpc"
 )
 
@@ -44,8 +46,10 @@ func newServer() *todoServer {
 }
 
 func main() {
-	port := 5555
-	host := "localhost"
+	cmd.Execute()
+	port := viper.GetInt("port")
+	host := viper.GetString("host")
+
 	conn, err := net.Listen("tcp", fmt.Sprintf("%s:%d", host, port))
 	if err != nil {
 		panic(fmt.Sprintf("err %s", err))
